@@ -656,3 +656,9 @@ client.connect_signal("focus",
     end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+-- Run some things
+awful.util.spawn_with_shell("xinput disable 'SynPS/2 Synaptics TouchPad'")
+awful.util.spawn_with_shell("/usr/bin/ibus-daemon -d")
+awful.util.spawn_with_shell("redshift-gtk &")
+
