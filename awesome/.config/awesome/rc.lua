@@ -65,7 +65,7 @@ local altkey       = "Mod1"
 local terminal     = "termite"
 local editor       = os.getenv("EDITOR") or "vim"
 local gui_editor   = "gvim"
-local browser      = "chromium"
+local browser      = "google-chrome-stable"
 
 awful.util.terminal = terminal
 awful.util.tagnames = { "1", "2", "3", "4", "5" }
