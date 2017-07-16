@@ -660,5 +660,5 @@ layout = wibox.layout.fixed.horizontal()
     -- Run some things
     awful.util.spawn_with_shell("xinput disable 'SynPS/2 Synaptics TouchPad'")
     awful.util.spawn_with_shell("/usr/bin/ibus-daemon -d")
-    awful.util.spawn_with_shell("redshift-gtk &")
+    awful.util.spawn_with_shell("killall redshift-gtk; redshift-gtk &")
 
