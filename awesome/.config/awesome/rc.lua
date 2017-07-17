@@ -355,17 +355,17 @@ awful.key({ altkey, }, "w", function () if beautiful.weather then beautiful.weat
 -- ALSA volume control
 awful.key({ altkey }, "Up",
 function ()
-  os.execute(string.format("amixer -q set %s 1%%+", beautiful.volume.channel))
+  os.execute(string.format("amixer -q set %s 5%%+", beautiful.volume.channel))
   beautiful.volume.update()
 end),
 awful.key({ altkey }, "Down",
 function ()
-  os.execute(string.format("amixer -q set %s 1%%-", beautiful.volume.channel))
+  os.execute(string.format("amixer -q set %s 5%%-", beautiful.volume.channel))
   beautiful.volume.update()
 end),
 awful.key({ altkey }, "m",
 function ()
-  os.execute(string.format("amixer -q set %s toggle", beautiful.volume.togglechannel or beautiful.volume.channel))
+  os.execute(string.format("pactl set-sink-mute 0 toggle", beautiful.volume.togglechannel or beautiful.volume.channel))
   beautiful.volume.update()
 end),
 awful.key({ altkey, "Control" }, "m",
