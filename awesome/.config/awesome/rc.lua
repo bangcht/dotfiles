@@ -421,6 +421,8 @@ awful.key({ modkey }, "v", function () awful.spawn("xsel -b | xsel") end),
 -- User programs
 awful.key({ modkey }, "e", function () awful.spawn(gui_editor) end),
 awful.key({ modkey }, "q", function () awful.spawn(browser) end),
+awful.key({ modkey }, "t", function () awful.spawn('/home/bangcht/Downloads/Telegram/Telegram') end),
+awful.key({ modkey }, "F2", function () awful.spawn('i3lock -i /home/bangcht/wall_lock.png -t -e -f') end),
 
 -- Default
 --[[ Menubar
@@ -466,8 +468,8 @@ awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getm
 {description = "move to master", group = "client"}),
 awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
 {description = "move to screen", group = "client"}),
-awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
-{description = "toggle keep on top", group = "client"}),
+-- awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
+-- {description = "toggle keep on top", group = "client"}),
 awful.key({ modkey,           }, "n",
 function (c)
   -- The client currently has the input focus, so it cannot be
