@@ -96,3 +96,6 @@ XF86MonBrightnessDown
 "deepin-screenshot"
 Print
 
+"sleep 0.1 && bash /home/bangcht/.dotfiles/xbindkeys/toggle_touchpad.sh"
+XF86TouchpadToggle
+
