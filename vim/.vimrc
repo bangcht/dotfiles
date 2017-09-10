@@ -21,7 +21,12 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'itchyny/lightline.vim'
+
 call vundle#end()
+
+" lightline
+set laststatus=2
 
 " YouCompleteMe
 let g:ycm_disable_for_files_larger_than_kb = 100
@@ -43,9 +48,9 @@ endif
 function! SetupPython()
     " Here, you can have the final say on what is set.  So
     " fixup any settings you don't like.
-    setlocal softtabstop=2
-    setlocal tabstop=2
-    setlocal shiftwidth=2
+    setlocal softtabstop=4
+    setlocal tabstop=4
+    setlocal shiftwidth=4
 endfunction
 command! -bar SetupPython call SetupPython()
 
