@@ -313,7 +313,7 @@ awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end
 {description = "open a terminal", group = "launcher"}),
 awful.key({ modkey, "Control" }, "r", awesome.restart,
 {description = "reload awesome", group = "awesome"}),
-awful.key({ modkey, "Shift"   }, "q", awesome.quit,
+awful.key({ modkey, "Shift"   }, "q",  function () awesome.quit() end,
 {description = "quit awesome", group = "awesome"}),
 
 awful.key({ altkey, "Shift"   }, "l",     function () awful.tag.incmwfact( 0.05)          end,
@@ -400,6 +400,20 @@ function ()
   awful.spawn.with_shell("mpc next")
   beautiful.mpd.update()
 end),
+awful.key({ altkey, "Control" }, "XF86Forward",
+function ()
+  awful.spawn.with_shell("mpc seek +5")
+  beautiful.mpd.update()
+end),
+awful.key({ altkey, "Control" }, "XF86Back",
+function ()
+  awful.spawn.with_shell("mpc seek -5")
+  beautiful.mpd.update()
+end),
+awful.key({ modkey, "Mod1"    }, "Right",     function () awful.tag.incmwfact( 0.01)    end),
+awful.key({ modkey, "Mod1"    }, "Left",     function () awful.tag.incmwfact(-0.01)    end),
+awful.key({ modkey, "Mod1"    }, "Down",     function () awful.client.incwfact( 0.01)    end),
+awful.key({ modkey, "Mod1"    }, "Up",     function () awful.client.incwfact(-0.01)    end),
 awful.key({ altkey }, "0",
 function ()
   local common = { text = "MPD widget ", position = "top_middle", timeout = 2 }
