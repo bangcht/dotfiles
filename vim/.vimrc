@@ -22,11 +22,23 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'itchyny/lightline.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 call vundle#end()
 
 " lightline
 set laststatus=2
+set noshowmode
+
+" 80 columns highlight
+" highlight OverLength ctermbg=red ctermfg=darkred guibg=#FFD9D9
+" match OverLength /\%121v.\+/
+
+" Heck you arrow keys
+nnoremap <Left> :echoe "Heck! Use h"<CR>
+nnoremap <Right> :echoe "Heck! Use l"<CR>
+nnoremap <Up> :echoe "Heck! Use k"<CR>
+nnoremap <Down> :echoe "Heck! Use j"<CR>
 
 " YouCompleteMe
 let g:ycm_disable_for_files_larger_than_kb = 100
@@ -54,3 +66,5 @@ function! SetupPython()
 endfunction
 command! -bar SetupPython call SetupPython()
 
+" Lint
+let g:syntastic_javascript_checkers = ['eslint']
