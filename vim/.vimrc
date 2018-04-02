@@ -26,11 +26,26 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'nvie/vim-flake8'
 
+Plugin 'mxw/vim-jsx'
+Plugin 'pangloss/vim-javascript'
+Plugin 'sbdchd/neoformat'
+
+Plugin 'shougo/unite.vim'
+Plugin 'Shougo/vimproc.vim'
+
 call vundle#end()
 
 " lightline
 set laststatus=2
 set noshowmode
+let g:lightline = {
+      \ 'component_function': {
+      \   'filename': 'LightLineFilename'
+      \ }
+      \ }
+function! LightLineFilename()
+  return expand('%')
+endfunction
 
 " 80 columns highlight
 " highlight OverLength ctermbg=red ctermfg=darkred guibg=#FFD9D9
@@ -63,6 +78,22 @@ let g:flake8_show_in_gutter=1
 autocmd BufWritePre * :%s/\s\+$//e
 autocmd BufRead,BufNewFile *.conf setf dosini
 
+" unite.vim
+let g:unite_source_grep_command       = 'ag'
+let g:unite_source_grep_default_opts  = '--column --nogroup --nocolor --follow --hidden'
+let g:unite_source_grep_recursive_opt = ''
+let g:unite_source_rec_async_command  = ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '--ignore', '*.jpeg', '--ignore', '*.jpg', '--ignore', '*.png', '--ignore', '*.gif', '--ignore', '*.ttf', '-g', '']
+nnoremap <C-F> :Unite -start-insert file_rec/async<cr>
+nnoremap <C-G> :Unite grep:.<cr>
+nnoremap <C-H> :Unite buffer<cr>
+autocmd FileType unite call s:unite_settings()
+function! s:unite_settings()
+  map <silent><buffer><expr> <C-H> unite#do_action('left')
+  map <silent><buffer><expr> <C-L> unite#do_action('right')
+  map <silent><buffer><expr> <C-J> unite#do_action('below')
+  map <silent><buffer><expr> <C-K> unite#do_action('above')
+endfunction
+
 " Return to last position when re-open a file
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -79,3 +110,4 @@ command! -bar SetupPython call SetupPython()
 
 " Lint
 let g:syntastic_javascript_checkers = ['eslint']
+
