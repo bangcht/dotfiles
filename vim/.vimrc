@@ -1,4 +1,5 @@
 filetype plugin indent on
+set encoding=utf-8
 set expandtab
 set tabstop=2
 set shiftwidth=2
@@ -23,6 +24,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'itchyny/lightline.vim'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'nvie/vim-flake8'
 
 call vundle#end()
 
@@ -45,12 +47,21 @@ let g:ycm_disable_for_files_larger_than_kb = 100
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_python_binary_path = '/usr/bin/python3'
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
+
 " NerdTree
 let NERDTreeIgnore = ['__pycache__']
+let NERDTreeDirArrows = 1
+
 " NerdCommenter
 let g:NERDSpaceDelims = 1
 
+" vim-flake8
+let g:flake8_show_in_file=1
+let g:flake8_show_in_gutter=1
+
 autocmd BufWritePre * :%s/\s\+$//e
+autocmd BufRead,BufNewFile *.conf setf dosini
 
 " Return to last position when re-open a file
 if has("autocmd")
