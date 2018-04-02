@@ -36,6 +36,14 @@ call vundle#end()
 " lightline
 set laststatus=2
 set noshowmode
+let g:lightline = {
+      \ 'component_function': {
+      \   'filename': 'LightLineFilename'
+      \ }
+      \ }
+function! LightLineFilename()
+  return expand('%')
+endfunction
 
 " 80 columns highlight
 " highlight OverLength ctermbg=red ctermfg=darkred guibg=#FFD9D9
@@ -64,7 +72,7 @@ let g:unite_source_grep_command       = 'ag'
 let g:unite_source_grep_default_opts  = '--column --nogroup --nocolor --follow --hidden'
 let g:unite_source_grep_recursive_opt = ''
 let g:unite_source_rec_async_command  = ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '--ignore', '*.jpeg', '--ignore', '*.jpg', '--ignore', '*.png', '--ignore', '*.gif', '--ignore', '*.ttf', '-g', '']
-nnoremap <C-F> :Unite file_rec/async<cr>
+nnoremap <C-F> :Unite -start-insert file_rec/async<cr>
 nnoremap <C-G> :Unite grep:.<cr>
 nnoremap <C-H> :Unite buffer<cr>
 autocmd FileType unite call s:unite_settings()
