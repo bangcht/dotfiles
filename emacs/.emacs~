@@ -29,25 +29,6 @@
 
 (defun insert-image-from-url (&optional url)
   (interactive)
-  (save-excursion  
-    (message url)
-    (unless url (setq url (url-get-url-at-point)))
-    (unless url
-	(error "Couldn't find URL."))
-    (let ((buffer (url-retrieve-synchronously url)))
-	(unwind-protect
-	    (let ((data (with-current-buffer buffer
-			(goto-char (point-min))
-			(search-forward "\n\n")
-			(buffer-substring (point) (point-max)))))
-		(goto-char (point-max))    
-		(end-of-line)
-	    (insert-image (create-image data 'imagemagick t :max-height 200)))
-	(kill-buffer buffer))))
-  )
-
-(defun insert-image-from-url-1 (&optional url)
-  (interactive)
   (unless url (setq url (url-get-url-at-point)))
   (unless url
     (error "Couldn't find URL."))
@@ -57,23 +38,11 @@
                        (goto-char (point-min))
                        (search-forward "\n\n")
                        (buffer-substring (point) (point-max)))))
-           (insert-image (create-image data 'imagemagick nil :height 20)))
+           (insert-image (create-image data nil t)))
       (kill-buffer buffer))))
 
-(defun add-new-line-at-end ()
+(defun shiba-shibe ()
   (interactive)
-  (save-excursion  
-    (goto-char (point-max))
-    (end-of-line)
-    (insert "\n")
-    )
-  )
-
-(require 's)
-
-(defun show-images-in-buffer ()
-  (interactive)
-  (add-new-line-at-end)
   (save-excursion  
     (goto-char (point-min))    
     (while (< (forward-line) 1)
@@ -81,12 +50,11 @@
       (let* ((lb (line-beginning-position))
              (le (line-end-position))
              (text (buffer-substring-no-properties lb le)))
-
-	(mapcar '(lambda(val) (if (s-starts-with? "http" val) (insert-image-from-url (s-replace "%20" " " val)))) (s-match "http\\([-:_A-Za-z0-9/.\%]+\\)jpg" text))
+	(when (string-match "[ \t]*$" test-str)
+	  (message (concat "[" (replace-match "" nil nil test-str) "]")))
 	)
-      )
-    )
-  )
+	    ;; (insert (format "%s" text))))
+  )))
 
 
 
