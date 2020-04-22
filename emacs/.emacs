@@ -7,6 +7,8 @@
 
 (require 'evil)
 (evil-mode 1)
+(setq org-pretty-entities t
+    org-pretty-entities-include-sub-superscripts t)
 
 (ac-config-default)
 
@@ -29,7 +31,7 @@
 
 (defun insert-image-from-url (&optional url)
   (interactive)
-  (save-excursion  
+  (save-excursion
     (message url)
     (unless url (setq url (url-get-url-at-point)))
     (unless url
@@ -40,7 +42,7 @@
 			(goto-char (point-min))
 			(search-forward "\n\n")
 			(buffer-substring (point) (point-max)))))
-		(goto-char (point-max))    
+		(goto-char (point-max))
 		(end-of-line)
 	    (insert-image (create-image data 'imagemagick t :max-height 200)))
 	(kill-buffer buffer))))
@@ -62,7 +64,7 @@
 
 (defun add-new-line-at-end ()
   (interactive)
-  (save-excursion  
+  (save-excursion
     (goto-char (point-max))
     (end-of-line)
     (insert "\n")
@@ -74,8 +76,8 @@
 (defun show-images-in-buffer ()
   (interactive)
   (add-new-line-at-end)
-  (save-excursion  
-    (goto-char (point-min))    
+  (save-excursion
+    (goto-char (point-min))
     (while (< (forward-line) 1)
       (end-of-line)
       (let* ((lb (line-beginning-position))
@@ -99,7 +101,7 @@
  '(evil-escape-mode t)
  '(package-selected-packages
    (quote
-    (s git-gutter jedi-direx pyvenv jedi auto-complete evil-escape evil))))
+    (zenburn-theme markdown-mode org ## s git-gutter jedi-direx pyvenv jedi auto-complete evil-escape evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
