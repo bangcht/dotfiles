@@ -6,6 +6,7 @@ set shiftwidth=2
 syntax on
 set number
 set t_Co=256
+set viminfo='20,<1000
 colorscheme ron
 let mapleader = ","
 nmap <silent> <leader>m :NERDTreeToggle<CR>
@@ -75,7 +76,7 @@ let g:NERDSpaceDelims = 1
 let g:flake8_show_in_file=1
 let g:flake8_show_in_gutter=1
 
-autocmd BufWritePre * :%s/\s\+$//e
+" autocmd BufWritePre * :%s/\s\+$//e
 autocmd BufRead,BufNewFile *.conf setf dosini
 
 " unite.vim
