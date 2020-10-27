@@ -30,16 +30,6 @@ export EDITOR=vim
 export VISUAL=vim
 
 # my alias
-alias _telegram="~/Downloads/Telegram/Telegram"
-alias _mosh-to-test="mosh --ssh='ssh -p 23171' bayo-ops@test.bayo.vn"
-alias _mosh-to-production="mosh --ssh='ssh -p 23171' bayo-ops@139.59.247.115"
-alias _mosh-to-ssr="mosh --ssh='ssh -p 23171' bayo-ops@139.59.229.132"
-alias _mosh-to-bookup="mosh --ssh='ssh -p 23171' bayo-ops@128.199.105.233"
-# alias _ssh_to_production="ssh bayo-ops@103.56.157.120 -p 23171"
-alias _ssh_to_static='ssh -p 23171 bayo-ops@static.bayo.vn'
-alias _mute="amixer set Capture toggle"
-alias _extendscreen="xrandr --output LVDS1 --auto --output VGA1 --right-of LVDS1"
-alias _shutdown="shutdown now"
 alias x="startx"
 alias _chrome="google-chrome-stable"
 # alias _chromium="chromium"
